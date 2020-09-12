@@ -6,7 +6,7 @@ import java.util.*
 /**
  * @Anthor:Tian
  * @Date:2020/9/12
- * @Description:
+ * @Description:生活指数
  */
 data class DailyResponse(val status: String, val result: Result) {
     data class Result(val daily: Daily)

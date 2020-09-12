@@ -7,6 +7,8 @@ import com.example.sunnyweather.R
  * @Date:2020/9/12
  * @Description:转换函数,将天气代码转换为一个Sky对象
  */
+
+//天气信息,图标,背景图
 class Sky(val info: String, val icon: Int, val bg: Int)
 
 private val sky = mapOf(
@@ -42,9 +44,9 @@ private val sky = mapOf(
     "DUST" to Sky("浮尘", R.drawable.ic_fog, R.drawable.bg_fog)
 )
 
+//获取天气的信息
 fun getSky(skycon: String): Sky {
     return sky[skycon] ?: sky["CLEAR_DAY"]!!
-
 }
 
 

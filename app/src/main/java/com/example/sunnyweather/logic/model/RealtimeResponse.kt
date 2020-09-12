@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 /**
  * @Anthor:Tian
  * @Date:2020/9/12
- * @Description:
+ * @Description:实时数据
  */
 data class RealtimeResponse(val status: String, val result: Result) {
     data class Result(val realtime: Realtime)

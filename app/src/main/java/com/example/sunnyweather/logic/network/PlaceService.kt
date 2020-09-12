@@ -9,7 +9,7 @@ import retrofit2.http.Query
 /**
  * @Anthor:Tian
  * @Date:2020/9/11
- * @Description:
+ * @Description:地点数据的接口
  */
 interface PlaceService {
     @GET("v2/place?token=${SunnyWeatherApplication.TOKEN}&lang=zh_CN")
