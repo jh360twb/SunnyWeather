@@ -38,7 +38,7 @@ object Repository {
     fun refreshWeather(lng: String, lat: String) = fire(Dispatchers.IO) {
         coroutineScope {
             //async函数可以将两个请求同步进行,但async必须在协程中使用
-            //所以使用coroutineScope创建了一个协程
+            //所以使用coroutineScope创建了一个协程 
             val deferredRealtime = async {
                 SunnyWeatherNetwork.getRealtimeWeather(lng, lat)
             }
