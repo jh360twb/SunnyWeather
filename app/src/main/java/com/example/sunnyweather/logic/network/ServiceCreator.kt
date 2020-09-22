@@ -15,8 +15,10 @@ object ServiceCreator {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+    //返回的是一个service的对象
     fun <T> create(serviceClass: Class<T>): T = retrofit.create(serviceClass)
 
     //泛型实化
     inline fun <reified T> create(): T = create(T::class.java)
+
 }

@@ -28,8 +28,10 @@ object SunnyWeatherNetwork {
     //Call的扩展函数,使用了泛型,即返回值是Call类型的Retrofit网络请求接口都可以直接调用await()函数
     //调用一下await()就可以发起网络请求并直接获得服务器响应的数据
     private suspend fun <T> Call<T>.await(): T {
-        //suspendCoroutine用来挂起当前协程
+        //suspendCoroutine必须在挂起函数中使用
+        //suspendCoroutine用来挂起当前协程,然后在一个普通的线程中执行Lambda表达式中的代码
         return suspendCoroutine { continuation ->
+            //由于拥有Call的上下文,所以有enqueue
             enqueue(object : Callback<T> {
                 override fun onFailure(call: Call<T>, t: Throwable) {
                     continuation.resumeWithException(t)
@@ -38,6 +40,7 @@ object SunnyWeatherNetwork {
                 override fun onResponse(call: Call<T>, response: Response<T>) {
                     val body = response.body()
                     if (body != null) continuation.resume(body)
+                    //body为null时
                     else continuation.resumeWithException(
                         RuntimeException("response body is null")
                     )

@@ -13,6 +13,7 @@ import retrofit2.http.Path
  * @Description:请求天气数据
  */
 interface WeatherService {
+    //返回的是一个Call
     @GET("v2.5/${SunnyWeatherApplication.TOKEN}/{lng},{lat}/realtime.json")
     fun getRealtimeWeather(
         @Path("lng") lng: String,
